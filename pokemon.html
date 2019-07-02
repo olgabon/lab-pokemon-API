@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+    
+<div>
+    <input id="input" type="text" name="pokemonName">
+    <button id="search">Search</button>
+</div>
+<div id="pokemon">
+
+</div>
+
+    <script>
+    $("#search").click(function(){
+        let nameToSearch = $("#input").val();
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${nameToSearch}/`)
+    .then((response)=>{
+        $("#pokemon").append(`<img src="${response.data.sprites.front_default}">`)}
+        ) 
+    .catch(function (error) {
+        console.log(error);
+        });
+    })
+
+
+    </script>
+</body>
+</html>
